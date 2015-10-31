@@ -1,0 +1,26 @@
+{
+  "name": "json-transform",
+  "version": "1.0.0",
+  "description": "transform any Javascript object or json",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "nodeunit tests/index.js --reporter nested --config tests/conf.json",
+    "testDebug": "DEBUG=true npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/storjarn/json-transform.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/storjarn/json-transform/issues"
+  },
+  "homepage": "https://github.com/storjarn/json-transform#readme"
+}
