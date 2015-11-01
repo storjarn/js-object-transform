@@ -15,7 +15,7 @@ var apiData = {
     firstname: 'Joe',
     lastname: 'Smith',
     age: 23,
-    birthday: 234424800000,
+    birthday: 234424800000
 };
 
 var convertConfig = {
@@ -24,13 +24,17 @@ var convertConfig = {
     },
     age: 'age',
     message: function(src) {
-	return 'Hello ' + src.firstname;
+        return 'Hello ' + src.firstname;
     }
 };
 
-var viewData = transform(apiData, {}, convertConfig);
+var viewData = {};
+
+viewData = transform(apiData, viewData, convertConfig);
 // OR
-var viewData = transform(apiData, convertConfig);
+viewData = transform(apiData, convertConfig);
+// OR
+transform(apiData, viewData, convertConfig);
 
 console.log(viewData);
 
@@ -38,7 +42,7 @@ console.log(viewData);
   {
     "name": "Joe Smith",
     "age": 23,
-    "message": "Hello Joe Smith"
+    "message": "Hello Joe"
   }
 */
 ```
