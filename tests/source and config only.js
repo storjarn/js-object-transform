@@ -14,8 +14,7 @@ module.exports = {
             num: 'one',
             string: 'affirmative',
             message: function(src, dest, key) {
-                dest[key] = src.string + " " + src.firstname;
-                return dest;
+                return src.string + " " + src.firstname;
             }
         };
         this.destination = transform(this.source, this.configuration);

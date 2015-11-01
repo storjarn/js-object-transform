@@ -24,7 +24,7 @@ function transform(src, dest, config) {
     Object.keys(config).forEach(function(key) {
         switch (typeof config[key]) {
             case 'function':
-                config[key](src, dest, key);
+                dest[key] = config[key](src, dest, key);
                 break;
             case 'string':
                 transform.transforms.default(src, dest, key, config[key]);
