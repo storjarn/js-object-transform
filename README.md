@@ -8,7 +8,10 @@ npm install js-object-transform
 
 ## Usage
 
-Conversion happens between objects with a configuration object, the keys being the new property name and the value being either the property on the source object to copy the value over from, or a function that allows a value to be computed.  The conversion function takes 4 arguments:
+Conversion happens between objects with a configuration object, the keys being the new property names and the values being either:
+
+1. a string, the property on the source object to copy the value over from, or
+2. a function that allows a value to be computed.  The conversion function takes 4 arguments:
 
 - the source object
 - the destination object
