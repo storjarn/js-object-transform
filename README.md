@@ -14,7 +14,7 @@ var transform = require('js-object-transform');
 var apiData = {
     firstname: 'Joe',
     lastname: 'Smith',
-    age: 23,
+    favorite_color: 'blue',
     birthday: 234424800000
 };
 
@@ -22,7 +22,10 @@ var convertConfig = {
     name: function(src, dest, srcKey, destKey) {
         return src.firstname + ' ' + src.lastname;
     },
-    age: 'age',
+    age: function(src, dest) {
+        return new Date().getFullYear() - new Date(src.birthday).getFullYear();
+    },
+    favorite_color: 'favorite_color',
     message: function(src) {
         return 'Hello ' + src.firstname;
     }
@@ -41,7 +44,8 @@ console.log(viewData);
 /**
   {
     "name": "Joe Smith",
-    "age": 23,
+    "age": 38,
+    "favorite_color": 'blue',
     "message": "Hello Joe"
   }
 */
