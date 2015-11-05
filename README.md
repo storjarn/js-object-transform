@@ -8,6 +8,15 @@ npm install js-object-transform
 
 ## Usage
 
+Conversion happens between objects with a configuration object, the keys being the new property name and the value being either the property on the source object to copy the value over from, or a function that allows a value to be computed.  The conversion function takes 4 arguments:
+
+- the source object
+- the destination object
+- the source key / property name
+- the destination key / property name
+
+This allows you to customize the calculated value with all relevant information.  That said, you will optimally only need the first argument, the source object, in most cases.
+
 ```
 var transform = require('js-object-transform');
 
