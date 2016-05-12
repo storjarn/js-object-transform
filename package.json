@@ -1,6 +1,6 @@
 {
   "name": "js-object-transform",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "transform any Javascript object or json",
   "main": "index.js",
   "directories": {
