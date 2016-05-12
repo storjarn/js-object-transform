@@ -27,7 +27,7 @@ function transform(src, dest, config) {
                 dest[key] = config[key](src, dest, key);
                 break;
             case 'string':
-                transform.transforms.default(src, dest, key, config[key]);
+                transform.transforms.default(src, dest, config[key], key);
                 break;
         }
     });
@@ -37,10 +37,27 @@ function transform(src, dest, config) {
 
 transform.transforms = {
     default: function(src, dest, srcKey, destKey) {
-        if (srcKey in src) {
-            dest[destKey] = src[srcKey];
-        }
+        dest[destKey] = getNamespacedProperty(src, srcKey);
     }
 };
+
+function getLastElement(arr) {
+    if (!arr.length) return null;
+    return arr[arr.length - 1];
+}
+
+function getNamespacedProperty(obj, path) {
+    var retVal = obj;
+    var paths = path.split('.');
+    for (var i = 0; i < paths.length; ++i) {
+        if (retVal && paths[i] in retVal) {
+            retVal = retVal[paths[i]];
+        } else {
+            retVal = null;
+            break;
+        }
+    }
+    return retVal;
+}
 
 module.exports = transform;

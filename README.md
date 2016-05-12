@@ -26,8 +26,13 @@ var transform = require('js-object-transform');
 var apiData = {
     firstname: 'Joe',
     lastname: 'Smith',
-    favorite_color: 'blue',
-    birthday: 234424800000
+    color: 'blue',
+    birthday: 234424800000,
+    extraData: {
+        someObject: {
+            someValue: 42
+        }
+    }
 };
 
 var convertConfig = {
@@ -37,10 +42,11 @@ var convertConfig = {
     age: function(src, dest) {
         return new Date().getFullYear() - new Date(src.birthday).getFullYear();
     },
-    favorite_color: 'favorite_color',
+    favorite_color: 'color',
     message: function(src) {
         return 'Hello ' + src.firstname;
-    }
+    },
+    theAnswer: 'extraData.someObject.someValue'
 };
 
 var viewData = {};
@@ -58,7 +64,8 @@ console.log(viewData);
     "name": "Joe Smith",
     "age": 38,
     "favorite_color": 'blue',
-    "message": "Hello Joe"
+    "message": "Hello Joe",
+    "theAnswer": 42
   }
 */
 ```

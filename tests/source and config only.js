@@ -7,15 +7,19 @@ module.exports = {
             num: 1,
             string: "Yes",
             firstname: 'Chris',
-            age: 23
+            age: 23,
+            someObject: {
+                someValue: 42
+            }
         };
         this.configuration = {
-            test: 'test2',
-            num: 'one',
-            string: 'affirmative',
-            message: function(src, dest, key) {
+            'test2' : 'test',
+            'one': 'num',
+            'affirmative': 'string',
+            'message': function(src, dest, key) {
                 return src.string + " " + src.firstname;
-            }
+            },
+            'theAnswer': 'someObject.someValue'
         };
         this.destination = transform(this.source, this.configuration);
 
@@ -49,6 +53,12 @@ module.exports = {
         test.expect(1);
 
         test.strictEqual(this.destination.message, 'Yes Chris');
+        test.done();
+    },
+    'can find and copy a value using a namepath': function(test) {
+        test.expect(1);
+
+        test.strictEqual(this.destination.theAnswer, 42);
         test.done();
     }
 };
