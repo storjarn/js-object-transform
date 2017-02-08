@@ -6,10 +6,10 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "nodeunit": "^0.9.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "./node_modules/nodeunit/bin/nodeunit tests/index.js --reporter nested --config tests/conf.json",
     "testDebug": "DEBUG=true npm test"
