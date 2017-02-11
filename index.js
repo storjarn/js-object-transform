@@ -35,18 +35,18 @@ function transform(src, dest, config) {
     return dest;
 }
 
+//============================ Transforms
+
 transform.transforms = {
-    default: function(src, dest, srcKey, destKey) {
-        dest[destKey] = getNamespacedProperty(src, srcKey);
+    Namespace: function(src, dest, srcKey, destKey) {
+        dest[destKey] = transform.getNamespacedProperty(src, srcKey);
     }
 };
+transform.transforms.default = transform.transforms.Namespace;
 
-function getLastElement(arr) {
-    if (!arr.length) return null;
-    return arr[arr.length - 1];
-}
+//============================ Utilities
 
-function getNamespacedProperty(obj, path) {
+transform.getNamespacedProperty = function getNamespacedProperty(obj, path) {
     var retVal = obj;
     var paths = path.split('.');
     for (var i = 0; i < paths.length; ++i) {
@@ -58,6 +58,6 @@ function getNamespacedProperty(obj, path) {
         }
     }
     return retVal;
-}
+};
 
 module.exports = transform;
